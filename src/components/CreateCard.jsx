@@ -12,7 +12,7 @@ function CreateCard() {
 
     const [cards, setCards] = useState([
         {
-            title: " ",
+        title: " ",
         content: " ",
         image: " "
         }

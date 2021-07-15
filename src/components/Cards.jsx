@@ -23,7 +23,7 @@ function Cards() {
         console.log(`Deleted card with id ${id}`)
     }
 
-    const [openUpdate, setOpenUpdate] = useState(false);
+    const [isPut, setIsPut] = useState(false);
     const [updatedCard, setUpdatedCard] = useState({
         title: "",
         content: "",
@@ -32,7 +32,7 @@ function Cards() {
     })
 
     function openUpdate(id) {
-        setOpenUpdate(true);
+        setIsPut(true);
         setUpdatedCard((prevCard) => {
             return {
                 ...prevCard,

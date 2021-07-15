@@ -5,8 +5,8 @@ function PostForm(props) {
     const url = 'http://localhost:3003/users/create';
     const [data, setData] = useState({
         name: " ",
-        imgURL: " ",
-        hobby: " "
+        content: " ",
+        image: " "
     })
 
     function submit(e) {
@@ -31,6 +31,7 @@ function PostForm(props) {
     }
     return (
         <div>
+        // add toggle here
         <form onSubmit= {(e) => submit(e)}>
         <input onChange= {(e) => handleChange(e)} id="name" value={data.name} placeholder="name" type="text"></input>
         <input onChange= {(e) => handleChange(e)} id="content" value={data.content} placeholder="content" type="text"></input>
