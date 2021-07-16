@@ -56,6 +56,23 @@ app.delete("/delete/:id",(req, res) => {
         }
 
 });
+
+//update route
+app.put("put/:id", (req, res) => {
+    const updatedCard = {
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image
+    }
+    Card.findByIdAndUpdate( {_id: req.params.id} , {$set: updatedCard}, (req, res, err) => {
+        if (!err) {
+            console.log("Item updated");
+        } else {
+            console.log(err);
+        }
+    }
+    )
+})
 });
 
 app.listen(port, function () {

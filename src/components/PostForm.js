@@ -29,9 +29,12 @@ function PostForm(props) {
         console.log(newdata)
 
     }
+
+    const [isPut, setIsPut] = useState(false);
+
     return (
-        <div>
-        // add toggle here
+         !isPut ?
+        (<div>
         <form onSubmit= {(e) => submit(e)}>
         <input onChange= {(e) => handleChange(e)} id="name" value={data.name} placeholder="name" type="text"></input>
         <input onChange= {(e) => handleChange(e)} id="content" value={data.content} placeholder="content" type="text"></input>
@@ -39,6 +42,16 @@ function PostForm(props) {
         <button>Add Card</button>
         </form>
         </div>
+    ) : (
+        <div>
+        <form onSubmit= {(e) => submit(e)}>
+        <input onChange= {(e) => handleChange(e)} id="name" value={data.name} placeholder="name" type="text"></input>
+        <input onChange= {(e) => handleChange(e)} id="content" value={data.content} placeholder="content" type="text"></input>
+        <input onChange= {(e) => handleChange(e)} id="image" value={data.image} placeholder="image" type="text"></input>
+        <button>Edit Card</button>
+        </form>
+        </div>
+    )
     )
 }
 
