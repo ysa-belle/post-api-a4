@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Cards from "./components/Cards";
 import CreateCard from "./components/CreateCard";
+import EditCard from "./components/EditCard";
 
 function App() {
   return(
@@ -22,7 +23,14 @@ function App() {
       <Route path="/create">
         <CreateCard />
       </Route>
+      <Route path="/edit/:id">
+        <EditCard />
+      </Route>
+
+
     </Router>
+
+    
 
   ) 
 

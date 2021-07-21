@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from "react";
 import "./CreateCard.css";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 function CreateCard() {
     const [input, setInput] = useState({
@@ -74,7 +75,7 @@ function CreateCard() {
 
             
         </form>
-        <button onClick={handleClick} type="submit" class="btn btn-primary">ADD CARD</button>
+        <Link to="/" onClick={handleClick} className="btn btn-primary"> SUBMIT </Link>
 
         
     </div>
