@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import Axios from 'axios';
+import { useHistory } from "react-router";
+import { Link, withRouter } from "react-router-dom";
 
 function PostForm(props) {
     const url = 'http://localhost:3003/users/create';
@@ -8,6 +10,8 @@ function PostForm(props) {
         content: " ",
         image: " "
     })
+
+    const history = useHistory();
 
     function submit(e) {
         e.preventDefault();
@@ -18,6 +22,12 @@ function PostForm(props) {
         })
         .then(res=> {
             console.log(res.data)
+            history.push({
+                pathname: '/cards',
+                state: {
+                    res: messageFromServer
+                }
+            })
         })
 
     }
@@ -30,29 +40,19 @@ function PostForm(props) {
 
     }
 
-    const [isPut, setIsPut] = useState(false);
 
     return (
-         !isPut ?
         (<div>
         <form onSubmit= {(e) => submit(e)}>
         <input onChange= {(e) => handleChange(e)} id="name" value={data.name} placeholder="name" type="text"></input>
         <input onChange= {(e) => handleChange(e)} id="content" value={data.content} placeholder="content" type="text"></input>
         <input onChange= {(e) => handleChange(e)} id="image" value={data.image} placeholder="image" type="text"></input>
+        
         <button>Add Card</button>
         </form>
+        <Link to = "/cards"> Click to Add Card </Link>
         </div>
-    ) : (
-        <div>
-        <form onSubmit= {(e) => submit(e)}>
-        <input onChange= {(e) => handleChange(e)} id="name" value={data.name} placeholder="name" type="text"></input>
-        <input onChange= {(e) => handleChange(e)} id="content" value={data.content} placeholder="content" type="text"></input>
-        <input onChange= {(e) => handleChange(e)} id="image" value={data.image} placeholder="image" type="text"></input>
-        <button>Edit Card</button>
-        </form>
-        </div>
-    )
-    )
+    ))
 }
 
 export default PostForm;
